@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Battery Prediction</title>
+</head>
+<body>
+    <h1>Battery RUL Prediction</h1>
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <label for="Cycle_Index">Cycle Index:</label>
+        <input type="number" id="Cycle_Index" name="Cycle_Index" step="any" required><br><br>
+        
+        <label for="Discharge_Time_s">Discharge Time (s):</label>
+        <input type="number" id="Discharge_Time_s" name="Discharge_Time_s" step="any" required><br><br>
+
+        <label for="Decrement_3_6_3_4V_s">Decrement 3.6-3.4V (s):</label>
+        <input type="number" id="Decrement_3_6_3_4V_s" name="Decrement_3_6_3_4V_s" step="any" required><br><br>
+
+        <label for="Max_Voltage_Dischar_V">Max Voltage Discharge (V):</label>
+        <input type="number" id="Max_Voltage_Dischar_V" name="Max_Voltage_Dischar_V" step="any" required><br><br>
+
+        <label for="Min_Voltage_Charg_V">Min Voltage Charge (V):</label>
+        <input type="number" id="Min_Voltage_Charg_V" name="Min_Voltage_Charg_V" step="any" required><br><br>
+
+        <label for="Time_at_4_15V_s">Time at 4.15V (s):</label>
+        <input type="number" id="Time_at_4_15V_s" name="Time_at_4_15V_s" step="any" required><br><br>
+
+        <label for="Time_constant_current_s">Time constant current (s):</label>
+        <input type="number" id="Time_constant_current_s" name="Time_constant_current_s" step="any" required><br><br>
+
+        <label for="Charging_time_s">Charging time (s):</label>
+        <input type="number" id="Charging_time_s" name="Charging_time_s" step="any" required><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if results %}
+        <h2>Predicted RUL: {{ results }}</h2>
+    {% endif %}
+</body>
+</html>
